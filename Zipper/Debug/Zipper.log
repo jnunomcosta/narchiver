@@ -1,0 +1,9 @@
+﻿  Zipper.cpp
+C:\Users\jnuno\Desktop\Javardices\MyZip\Zipper\Zipper.cpp(36,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jnuno\Desktop\Javardices\MyZip\Zipper\Zipper.cpp(47,58): warning C4244: 'argument': conversion from 'uintmax_t' to 'int', possible loss of data
+C:\Users\jnuno\Desktop\Javardices\MyZip\Zipper\Zipper.cpp(84,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jnuno\Desktop\Javardices\MyZip\Zipper\Zipper.cpp(124,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jnuno\Desktop\Javardices\MyZip\Zipper\Zipper.cpp(174,45): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jnuno\Desktop\Javardices\MyZip\Zipper\Zipper.cpp(176,53): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\jnuno\Desktop\Javardices\MyZip\Zipper\Zipper.cpp(208,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Zipper.vcxproj -> C:\Users\jnuno\Desktop\Javardices\MyZip\Zipper\Debug\Zipper.exe
