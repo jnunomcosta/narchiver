@@ -1,2 +1,2 @@
-# NZip
-My own implementation of a zip and unzip like program
+# Narchiver
+My own implementation of a folder archiver program
