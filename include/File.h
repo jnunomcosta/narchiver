@@ -13,12 +13,15 @@ public:
 
 	void setName(std::string);
 	void setSize(int);
+	void setFullPath(std::string);
 	
 	std::string getName();
+	std::string getFullPath();
 	int getSize();
 
 private:
 	std::string name;
+	std::string full_path;
 	int size;
 };
 

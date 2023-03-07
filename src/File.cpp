@@ -4,6 +4,7 @@ File::File(std::string n,int s)
 {
     this->name = n;
     this->size = s;
+    this->full_path = "";
 }
 
 File::~File()
@@ -26,3 +27,13 @@ void File::setSize(int s) {
     this->size = s;
 }
 
+void File::setFullPath(std::string f)
+{
+    this->full_path = f;
+    this->full_path.append("/").append(this->name);
+}
+
+std::string File::getFullPath()
+{
+    return this->full_path;
+}

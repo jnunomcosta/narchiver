@@ -9,19 +9,17 @@
 #include <filesystem>
 #include <string.h>
 
-#include <Folder.h>
-#include <File.h>
-
 class Dearchiver
 {
 public:
-    Dearchiver(std::string archived_file);
+    Dearchiver(std::string archived_file, std::string dearchived_folder);
     ~Dearchiver();
 
     void dearchive();
 
 private:
     std::string archived_file;
+    std::string dearchived_folder;
 };
 
 #endif //DEARCHIVER_H

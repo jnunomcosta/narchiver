@@ -4,23 +4,27 @@
 
 #include <string>
 #include <vector>
-#include <File.h>
+#include "File.h"
 
 class Folder
 {
 public:
-    Folder(std::string);
+    explicit Folder(std::string name);
     ~Folder();
 
     std::string getName();
-    void setName(std::string);
-    void addFile(File&);
-    void addFolder(Folder&);
+    void setName(std::string name);
+    void addFile(File* file);
+    void addFolder(Folder* folder);
+    std::vector<File*> getFiles();
+    std::vector<Folder*> getFolders();
+    int getContents();
 
 private:
     std::string name;
-    std::vector<File> files;
-    std::vector<Folder> subfolders;
+    std::vector<File*> files;
+    std::vector<Folder*> subfolders;
+    int contents;
 };
 
 #endif //FOLDER_H

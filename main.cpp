@@ -15,21 +15,12 @@ CURRENT STRUCTURE:
 #include <Archiver.h>
 #include <Dearchiver.h>
 
-int main(int argc, char** argv)
+int main(int argc, const char** argv)
 {
-    for(int i=0;i<argc;i++)
-    {
-        std::cout << argv[i] << "\n";
-    }
+    /* Archiver ar = Archiver("../sample", "../sample_output/file.nar");
+    ar.archive(); */ //I think it works a
 
-    FILE* aaaa = fopen("helo2.ar","w");
-    fprintf(aaaa,"olaolaoa%d\n",69);
-    fclose(aaaa);
-
-    Archiver ar = Archiver("path/to/folder", "path/to/archive/helo.nar");
-    ar.archive();
-
-    Dearchiver dr = Dearchiver("path/to/archive/helo.nar");
+    Dearchiver dr = Dearchiver("../sample_output/file.nar", "../sample_output");
     dr.dearchive();
 
     return 0;
