@@ -1,4 +1,19 @@
 {
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        100
+    ],
+    "files.insertFinalNewline": true,
+    "cmake.generator": "Unix Makefiles",
+    "cmake.buildDirectory": "${workspaceFolder}/build-${buildType}",
+    // Clang-format 
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    // Clang-tidy 
+    "C_Cpp.codeAnalysis.clangTidy.enabled": false,
+    "C_Cpp.codeAnalysis.exclude": {
+        "**/build*": true,
+        "**/external": true,
+    },
     "files.associations": {
         "string": "cpp",
         "array": "cpp",
