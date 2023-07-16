@@ -7,22 +7,22 @@
 class File
 {
 public:
-	File(std::string, int);
+	File(std::string, uint64_t);
 
 	~File();
 
 	void setName(std::string);
-	void setSize(int);
+	void setSize(uint64_t);
 	void setFullPath(std::string);
 	
 	std::string getName();
 	std::string getFullPath();
-	int getSize();
+	uint64_t getSize();
 
 private:
 	std::string name;
 	std::string full_path;
-	int size;
+	uint64_t size;
 };
 
 #endif //FILE_H

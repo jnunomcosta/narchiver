@@ -1,4 +1,5 @@
 #include "Archiver.h"
+#include <sstream>
 
 Archiver::Archiver(std::string folder_path, std::string archive_path)
 {
@@ -17,10 +18,11 @@ void writeFileByteData(FILE *arch_file_pointer, File *file)
     unsigned char file_flag = 0;
     fwrite(&file_flag, sizeof(unsigned char), 1, arch_file_pointer); // Flag indicating File or Folder
 
-    auto file_name = file->getName().c_str();
-    int file_name_size = strlen(file_name) + 1;
-    fwrite(&file_name_size, sizeof(int), 1, arch_file_pointer);         // Size of the File Name
-    fwrite(file_name, sizeof(char), file_name_size, arch_file_pointer); // File Name itself
+    auto file_name = file->getName();
+    auto file_name_str = file_name.c_str();
+    unsigned int file_name_size = static_cast<unsigned int>(strlen(file_name_str)) + 1;
+    fwrite(&file_name_size, sizeof(unsigned int), 1, arch_file_pointer);    // Size of the File Name
+    fwrite(file_name_str, sizeof(char), file_name_size, arch_file_pointer); // File Name itself
 
     auto file_size = file->getSize();
     fwrite(&file_size, sizeof(int), 1, arch_file_pointer); // File size
@@ -47,10 +49,11 @@ void writeFolderByteData(FILE *arch_file_pointer, Folder *folder, std::string fo
     unsigned char folder_flag = 1;
     fwrite(&folder_flag, sizeof(unsigned char), 1, arch_file_pointer); // Flag indicating File or Folder
 
-    auto folder_name = folder->getName().c_str();
-    int folder_name_size = strlen(folder_name) + 1;
-    fwrite(&folder_name_size, sizeof(int), 1, arch_file_pointer);           // Size of the Folder Name
-    fwrite(folder_name, sizeof(char), folder_name_size, arch_file_pointer); // Folder Name itself
+    auto folder_name = folder->getName();
+    auto folder_name_str = folder_name.c_str();
+    unsigned int folder_name_size = static_cast<unsigned int>(strlen(folder_name_str)) + 1;
+    fwrite(&folder_name_size, sizeof(unsigned int), 1, arch_file_pointer);           // Size of the Folder Name
+    fwrite(folder_name_str, sizeof(char), folder_name_size, arch_file_pointer); // Folder Name itself
 
     auto folder_contents = folder->getContents();
     fwrite(&folder_contents, sizeof(int), 1, arch_file_pointer); // Contents
@@ -175,9 +178,9 @@ int loadFiles(std::string base_path, std::string current_path, Folder *base_fold
 {
     int num_files = 0;
 
-    for (const auto &entry : std::filesystem::directory_iterator(current_path))
+    for (const auto &entry : std::__fs::filesystem::directory_iterator(current_path))
     {
-        if (std::filesystem::is_directory(entry))
+        if (std::__fs::filesystem::is_directory(entry))
         {
             /* std::cout << "Filename => " << entry.path().filename() << " - ";                           // ex: folder2
             std::cout << "Relative => " << std::filesystem::relative(entry.path(), base_path) << "\n"; // ex: folder1/folder2 */
@@ -189,24 +192,24 @@ int loadFiles(std::string base_path, std::string current_path, Folder *base_fold
         {
             /* std::cout << "Filename => " << entry.path().filename() << " - ";                           // ex: file3.txt
             std::cout << "Relative => " << std::filesystem::relative(entry.path(), base_path) << "\n"; // ex: folder1/folder2/file3.txt */
-            base_folder->addFile(new File(entry.path().filename(), std::filesystem::file_size(entry.path())));
+            base_folder->addFile(new File(entry.path().filename(), std::__fs::filesystem::file_size(entry.path())));
         }
     }
 
     return num_files;
 }
 
-int Archiver::getfiles(std::string folder_path)
+int Archiver::getfiles(std::string folderPath)
 {
     int num_files = 0;
     // std::shared_ptr<Folder> current_folder = this->folder_archive;
-    for (const auto &entry : std::filesystem::directory_iterator(folder_path))
+    for (const auto &entry : std::__fs::filesystem::directory_iterator(folderPath))
     {
         // auto a = std::filesystem::relative(entry.path(), folder_path);// << std::endl;
         // std::cout << std::filesystem::relative(entry.path(), folder_path) << std::endl;
         // std::cout << entry.path() << std::endl;
 
-        if (std::filesystem::is_directory(entry))
+        if (std::__fs::filesystem::is_directory(entry))
         {
             /* std::cout << entry.path().filename() << "\n";
             std::cout << "Relative => " << std::filesystem::relative(entry.path(), folder_path) << "\n"; */

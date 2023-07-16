@@ -15,10 +15,10 @@ CURRENT STRUCTURE:
 #include <Archiver.h>
 #include <Dearchiver.h>
 
-int main(int argc, const char** argv)
+int main(int /* argc */, const char** /* argv */)
 {
     /* Archiver ar = Archiver("../sample", "../sample_output/file.nar");
-    ar.archive(); */ //I think it works a
+    ar.archive(); */ // I think it works
 
     Dearchiver dr = Dearchiver("../sample_output/file.nar", "../sample_output");
     dr.dearchive();

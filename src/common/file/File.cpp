@@ -1,6 +1,6 @@
-#include <File.h>
+#include "File.h"
 
-File::File(std::string n,int s)
+File::File(std::string n,uint64_t s)
 {
     this->name = n;
     this->size = s;
@@ -19,11 +19,11 @@ void File::setName(std::string n) {
     this->name = n;
 }
 
-int File::getSize() {
+uint64_t File::getSize() {
     return this->size;
 }
 
-void File::setSize(int s) {
+void File::setSize(uint64_t s) {
     this->size = s;
 }
 

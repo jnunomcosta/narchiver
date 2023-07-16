@@ -1,4 +1,5 @@
 #include "Dearchiver.h"
+#include <sstream>
 
 std::vector<std::string> dearchiver_split(const std::string &s, char delimiter)
 {
@@ -12,10 +13,10 @@ std::vector<std::string> dearchiver_split(const std::string &s, char delimiter)
     return tokens;
 }
 
-Dearchiver::Dearchiver(std::string archived_file, std::string dearchived_folder)
+Dearchiver::Dearchiver(std::string archived_file, std::string dearchivedFolder)
 {
     this->archived_file = archived_file;
-    this->dearchived_folder = dearchived_folder;
+    this->dearchived_folder = dearchivedFolder;
 }
 
 Dearchiver::~Dearchiver()
@@ -37,8 +38,8 @@ unsigned char handleTypeFlag(FILE *in)
 
 void readFile(FILE *in, std::string dearchived_folder)
 {
-    int name_size = 0;
-    fread(&name_size, sizeof(int), 1, in);
+    unsigned int name_size = 0;
+    fread(&name_size, sizeof(unsigned int), 1, in);
 
     char* file_name = new char[name_size];
     auto hamb = fread(&file_name, sizeof(char), name_size, in);
@@ -57,8 +58,8 @@ void readFile(FILE *in, std::string dearchived_folder)
     FILE *out;
     if ((out = fopen(fname.c_str(), "wb")) != 0)
     {
-        int fsize = 0;
-        fread(&fsize, sizeof(int), 1, in);
+        unsigned int fsize = 0;
+        fread(&fsize, sizeof(unsigned int), 1, in);
 
         unsigned char byte_buffer[2048];
         size_t bytes_read = 0, total_bytes_read = 0;
@@ -88,8 +89,8 @@ void readFile(FILE *in, std::string dearchived_folder)
 
 void readFolder(FILE *in, std::string dearchived_folder)
 {
-    int name_size = 0;
-    fread(&name_size, sizeof(int), 1, in);
+    unsigned int name_size = 0;
+    fread(&name_size, sizeof(unsigned int), 1, in);
 
     char* folder_name = new char[name_size];
     fread(&folder_name, sizeof(char), name_size, in);
@@ -109,7 +110,7 @@ void readFolder(FILE *in, std::string dearchived_folder)
     std::string fname;
     fname.append(dearchived_folder).append("/").append(folder_name);
     delete[] folder_name;
-    if (std::filesystem::create_directory(fname))
+    if (std::__fs::filesystem::create_directory(fname))
     {
         for (int i = 0; i < folder_contents; i++)
         {

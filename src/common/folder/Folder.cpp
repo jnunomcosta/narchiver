@@ -1,8 +1,8 @@
 #include "Folder.h"
 
-Folder::Folder(std::string name)
+Folder::Folder(std::string Name)
 {
-    this->name = name;
+    this->name = Name;
     this->files = std::vector<File*>();
     this->subfolders = std::vector<Folder*>();
     this->contents = 0;
@@ -34,8 +34,8 @@ std::string Folder::getName() {
     return this->name;
 }
 
-void Folder::setName(std::string name) {
-    this->name = name;
+void Folder::setName(std::string folderName) {
+    this->name = folderName;
 }
 
 void Folder::addFile(File* file) {
@@ -58,7 +58,7 @@ std::vector<Folder*> Folder::getFolders()
     return this->subfolders;
 }
 
-int Folder::getContents()
+uint64_t Folder::getContents()
 {
-    return contents;
+    return this->contents;
 }
