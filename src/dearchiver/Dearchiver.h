@@ -12,7 +12,7 @@
 class Dearchiver
 {
 public:
-    Dearchiver(std::string archived_file, std::string dearchivedFolder);
+    Dearchiver(std::string archivedFile, std::string dearchivedFolder);
     ~Dearchiver();
 
     void dearchive();

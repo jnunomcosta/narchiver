@@ -16,7 +16,7 @@
 class Archiver
 {
 public:
-    Archiver(std::string folder_path, std::string archive_path);
+    Archiver(std::string folderPath, std::string archivePath);
     ~Archiver();
 
     void archive();

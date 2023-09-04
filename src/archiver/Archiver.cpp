@@ -1,10 +1,10 @@
 #include "Archiver.h"
 #include <sstream>
 
-Archiver::Archiver(std::string folder_path, std::string archive_path)
+Archiver::Archiver(std::string folderPath, std::string archivePath)
 {
-    this->folder_path = folder_path;
-    this->archive_path = archive_path;
+    this->folder_path = folderPath;
+    this->archive_path = archivePath;
     this->total_files = 0;
     this->files_processed = 0;
 }
@@ -178,9 +178,9 @@ int loadFiles(std::string base_path, std::string current_path, Folder *base_fold
 {
     int num_files = 0;
 
-    for (const auto &entry : std::__fs::filesystem::directory_iterator(current_path))
+    for (const auto &entry : std::filesystem::directory_iterator(current_path))
     {
-        if (std::__fs::filesystem::is_directory(entry))
+        if (std::filesystem::is_directory(entry))
         {
             /* std::cout << "Filename => " << entry.path().filename() << " - ";                           // ex: folder2
             std::cout << "Relative => " << std::filesystem::relative(entry.path(), base_path) << "\n"; // ex: folder1/folder2 */
@@ -192,7 +192,7 @@ int loadFiles(std::string base_path, std::string current_path, Folder *base_fold
         {
             /* std::cout << "Filename => " << entry.path().filename() << " - ";                           // ex: file3.txt
             std::cout << "Relative => " << std::filesystem::relative(entry.path(), base_path) << "\n"; // ex: folder1/folder2/file3.txt */
-            base_folder->addFile(new File(entry.path().filename(), std::__fs::filesystem::file_size(entry.path())));
+            base_folder->addFile(new File(entry.path().filename(), std::filesystem::file_size(entry.path())));
         }
     }
 
@@ -203,13 +203,13 @@ int Archiver::getfiles(std::string folderPath)
 {
     int num_files = 0;
     // std::shared_ptr<Folder> current_folder = this->folder_archive;
-    for (const auto &entry : std::__fs::filesystem::directory_iterator(folderPath))
+    for (const auto &entry : std::filesystem::directory_iterator(folderPath))
     {
         // auto a = std::filesystem::relative(entry.path(), folder_path);// << std::endl;
         // std::cout << std::filesystem::relative(entry.path(), folder_path) << std::endl;
         // std::cout << entry.path() << std::endl;
 
-        if (std::__fs::filesystem::is_directory(entry))
+        if (std::filesystem::is_directory(entry))
         {
             /* std::cout << entry.path().filename() << "\n";
             std::cout << "Relative => " << std::filesystem::relative(entry.path(), folder_path) << "\n"; */

@@ -4,7 +4,7 @@
 macro(set_default_compile_flags)
     set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
-    set(CMAKE_CXX_STANDARD 14)
+    set(CMAKE_CXX_STANDARD 17)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
     # ... but not the compiler-specific variant
@@ -59,7 +59,7 @@ macro(set_default_compile_flags)
 
         # See https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html and
         # https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#Optimize-Options
-        link_libraries(-Wl,-z,noexecstack)
+        #link_libraries(-Wl,-z,noexecstack)
 
     else()
         add_compile_options(
@@ -76,10 +76,10 @@ macro(set_default_compile_flags)
 
     # https://wiki.debian.org/Hardening#DEB_BUILD_HARDENING_RELRO_.28ld_-z_relro.29
     # https://wiki.debian.org/Hardening#DEB_BUILD_HARDENING_BINDNOW_.28ld_-z_now.29
-    link_libraries(
-        "-Wl,-z,relro"
-        "-Wl,-z,now"
-    )
+    #link_libraries(
+    #    "-Wl,relro"
+    #    "-Wl,now"
+    #)
 
     # https://gcc.gnu.org/ml/gcc-patches/2004-09/msg02055.html
     if(NOT CMAKE_BUILD_TYPE MATCHES "^(Debug|Coverage)$")

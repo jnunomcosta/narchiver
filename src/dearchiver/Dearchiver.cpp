@@ -13,9 +13,9 @@ std::vector<std::string> dearchiver_split(const std::string &s, char delimiter)
     return tokens;
 }
 
-Dearchiver::Dearchiver(std::string archived_file, std::string dearchivedFolder)
+Dearchiver::Dearchiver(std::string archivedFile, std::string dearchivedFolder)
 {
-    this->archived_file = archived_file;
+    this->archived_file = archivedFile;
     this->dearchived_folder = dearchivedFolder;
 }
 
@@ -110,7 +110,7 @@ void readFolder(FILE *in, std::string dearchived_folder)
     std::string fname;
     fname.append(dearchived_folder).append("/").append(folder_name);
     delete[] folder_name;
-    if (std::__fs::filesystem::create_directory(fname))
+    if (std::filesystem::create_directory(fname))
     {
         for (int i = 0; i < folder_contents; i++)
         {
