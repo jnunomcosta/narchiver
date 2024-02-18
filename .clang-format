@@ -1,0 +1,116 @@
+BasedOnStyle: Mozilla
+Language: Cpp
+Standard: c++14
+
+AccessModifierOffset: -4
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlinesLeft: true
+AlignOperands: true
+AlignTrailingComments: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: true
+AlwaysBreakTemplateDeclarations: true
+BinPackArguments: false
+BinPackParameters: false
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: true
+  AfterUnion: false
+  BeforeCatch: true
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: false
+BreakBeforeBinaryOperators: All
+BreakBeforeBraces: Custom
+BreakBeforeInheritanceComma: true
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeComma
+ColumnLimit: 100
+CommentPragmas: '^ IWYU pragma:'
+CompactNamespaces: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 6
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+DisableFormat: false
+ExperimentalAutoDetectBinPacking: false
+FixNamespaceComments: true
+ForEachMacros: [ 'foreach', 'Q_FOREACH', 'BOOST_FOREACH' ]
+#IncludeBlocks: Preserve
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^(<|")(gtest|gmock)\/'
+    Priority:        70
+  - Regex:           '^<.+\/.+\.h>$'
+    Priority:        20
+  - Regex:           '^<.+\.h>$'
+    Priority:        20
+  - Regex:           '^<Q.+>$'
+    Priority:        40
+  - Regex:           '^<N.+>$'
+    Priority:        50
+  - Regex:           '^<[a-z]+>$'
+    Priority:        30
+  - Regex:           '^<.+\.hpp>$'
+    Priority:        60
+  - Regex:           '^"nlog\.h"$'
+    Priority:        75
+  - Regex:           '^".+\.h"$'
+    Priority:        80
+IncludeIsMainRegex: '$'
+IndentCaseLabels: false
+IndentFunctionDeclarationAfterType: false
+IndentPPDirectives: AfterHash
+IndentWidth: 4
+IndentWrappedFunctionNames: true
+KeepEmptyLinesAtTheStartOfBlocks: true
+
+# There are situations where two "MaxEmptyLinesToKeep" are acceptable, however, since clang-format cannot currently distinguish between those cases, one "MaxEmptyLinesToKeep" seems
+# to be a safer bet.
+MaxEmptyLinesToKeep: 1
+
+NamespaceIndentation: None
+PenaltyBreakBeforeFirstCallParameter: 1
+PenaltyBreakComment: 1
+PenaltyBreakFirstLessLess: 1
+PenaltyBreakString: 1
+PenaltyExcessCharacter: 1000
+PenaltyReturnTypeOnItsOwnLine: 1
+PointerAlignment: Left
+ReflowComments: true
+SortIncludes: true
+SortUsingDeclarations: true
+SpaceAfterCStyleCast: false
+SpaceAfterTemplateKeyword: false
+SpaceBeforeAssignmentOperators: true
+#SpaceBeforeCtorInitializerColon: true
+#SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+#SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+TabWidth: 4
+UseTab: Never
+
