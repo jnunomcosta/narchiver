@@ -1,0 +1,26 @@
+name: narchiver-linter
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  clang-tidy-review: #TODO - Does not check anything
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run clang-tidy
+        uses: ZedThree/clang-tidy-review@v0.14.0
+        id: review
+        with:
+          config_file: ".clang-tidy"
+          exclude: "tests/*"
+
+      - if: steps.review.outputs.total_comments > 0
+        run: exit 1  
+
+      - name: Upload clang-tidy fixes
+        uses: ZedThree/clang-tidy-review/upload@v0.14.0
